@@ -97,13 +97,49 @@
 
           <!-- NUEVO CAMPO TRIBUNAL -->
           <select id="tribunalExp">
-            <option value="">Tribunal (opcional)</option>
-            <option value="Juzgado de Letras">Juzgado de Letras</option>
-            <option value="Juzgado de Familia">Juzgado de Familia</option>
-            <option value="Juzgado de Garantía">Juzgado de Garantía</option>
-            <option value="Corte de Apelaciones">Corte de Apelaciones</option>
-            <option value="Corte Suprema">Corte Suprema</option>
-          </select>
+  <option value="">Selecciona un Tribunal</option>
+
+<optgroup label="NO JUDICIAL">
+  <option value="No c">NO JUDICIAL</option>
+</optgroup>
+
+  <optgroup label="LA SERENA">
+    <option value="Tribunal de Juicio Oral en lo Penal de La Serena">TRIBUNAL DE JUICIO ORAL EN LO PENAL DE LA SERENA</option>
+    <option value="1° Juzgado de Letras de La Serena">1° JUZGADO DE LETRAS DE LA SERENA</option>
+    <option value="2° Juzgado de Letras de La Serena">2° JUZGADO DE LETRAS DE LA SERENA</option>
+    <option value="3° Juzgado de Letras de La Serena">3° JUZGADO DE LETRAS DE LA SERENA</option>
+    <option value="Juzgado de Familia de La Serena">JUZGADO DE FAMILIA DE LA SERENA</option>
+    <option value="Juzgado de Letras del Trabajo de La Serena">JUZGADO DE LETRAS DEL TRABAJO DE LA SERENA</option>
+    <option value="Juzgado de Garantía de La Serena">JUZGADO DE GARANTÍA DE LA SERENA</option>
+    <option value="Otros (Estudio Jurídico, La Serena)">OTROS (ESTUDIO JURÍDICO, LA SERENA)</option>
+  </optgroup>
+
+  <optgroup label="COQUIMBO">
+    <option value="1° Juzgado de Letras de Coquimbo">1° JUZGADO DE LETRAS DE COQUIMBO</option>
+    <option value="2° Juzgado de Letras de Coquimbo">2° JUZGADO DE LETRAS DE COQUIMBO</option>
+    <option value="3° Juzgado de Letras de Coquimbo">3° JUZGADO DE LETRAS DE COQUIMBO</option>
+    <option value="Juzgado de Familia de Coquimbo">JUZGADO DE FAMILIA DE COQUIMBO</option>
+    <option value="Juzgado de Garantía de Coquimbo">JUZGADO DE GARANTÍA DE COQUIMBO</option>
+  </optgroup>
+
+  <optgroup label="OVALLE">
+    <option value="Tribunal de Juicio Oral en lo Penal de Ovalle">TRIBUNAL DE JUICIO ORAL EN LO PENAL DE OVALLE</option>
+    <option value="1° Juzgado de Letras de Ovalle">1° JUZGADO DE LETRAS DE OVALLE</option>
+    <option value="2° Juzgado de Letras de Ovalle">2° JUZGADO DE LETRAS DE OVALLE</option>
+    <option value="3° Juzgado de Letras de Ovalle">3° JUZGADO DE LETRAS DE OVALLE</option>
+    <option value="Juzgado de Familia de Ovalle">JUZGADO DE FAMILIA DE OVALLE</option>
+    <option value="Juzgado de Garantía de Ovalle">JUZGADO DE GARANTÍA DE OVALLE</option>
+  </optgroup>
+
+  <optgroup label="OTROS">
+    <option value="Juzgado de Letras y Garantía de Andacollo">JUZGADO DE LETRAS Y GARANTÍA DE ANDACOLLO</option>
+    <option value="Juzgado de Letras de Vicuña">JUZGADO DE LETRAS DE VICUÑA</option>
+    <option value="Juzgado de Garantía de Vicuña">JUZGADO DE GARANTÍA DE VICUÑA</option>
+    <option value="Juzgado de Letras y Garantía de Combarbalá">JUZGADO DE LETRAS Y GARANTÍA DE COMBARBALÁ</option>
+    <option value="Juzgado de Garantía de Illapel">JUZGADO DE GARANTÍA DE ILLAPEL</option>
+    <option value="Juzgado de Letras y Garantía de Los Vilos">JUZGADO DE LETRAS Y GARANTÍA DE LOS VILOS</option>
+  </optgroup>
+</select>
 
           <input type="text" id="abogadosExp" placeholder="Abogado(s) asignado(s)">
           <button type="submit">Guardar expediente</button>
@@ -125,6 +161,8 @@
 
           <textarea id="descripcionTarea" placeholder="Descripción detallada"></textarea>
           <input type="text" id="abogadoTarea" placeholder="Abogado asignado" required>
+          <input type="date" id="fechaInicioTarea" required>
+          <input type="date" id="fechaTerminoTarea" required>
 
           <select id="estadoTarea">
             <option value="no iniciado">No iniciado</option>

@@ -18,31 +18,10 @@ body {
 }
 
 /* === SIDEBAR === */
-.sidebar {
-  width: 220px;
-  background-color: #1c1f2a;
-  color: #fff;
-  padding: 1rem;
-}
-
-.sidebar h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar li {
-  margin: 0.5rem 0;
-}
-
 .sidebar a {
   text-decoration: none;
-  color: white;
+  color: #1c1f2a; /* Texto oscuro para contraste */
+  background-color: #f0f0f0; /* Fondo gris claro por defecto */
   display: block;
   padding: 0.6rem;
   border-radius: 6px;
@@ -51,9 +30,11 @@ body {
 
 .sidebar a:hover,
 .sidebar a.active {
-  background-color: #2d3a55;
+  background-color: #2d3a55; /* Azul oscuro cuando está activo o en hover */
+  color: white; /* Texto blanco para contraste */
   font-weight: bold;
 }
+
 
 /* === CONTENIDO PRINCIPAL === */
 .contenido {
