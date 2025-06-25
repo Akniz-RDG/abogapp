@@ -1,0 +1,7 @@
+abogapp/
+│
+├── index.html
+├── style.css
+├── script.js
+└── data/
+    └── clientes.json

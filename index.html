@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AbogApp - Gestión Legal</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Menú lateral -->
+    <aside class="sidebar">
+      <h2>AbogApp</h2>
+      <nav>
+        <ul>
+          <li><a href="#" data-tab="dashboard">📊 Dashboard</a></li>
+          <li><a href="#" data-tab="clientes">👤 Clientes</a></li>
+          <li><a href="#" data-tab="expedientes">📁 Expedientes</a></li>
+          <li><a href="#" data-tab="tareas">📝 Tareas</a></li>
+          <li><a href="#" data-tab="utilidades">🛠 Utilidades</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="contenido">
+      
+      <!-- DASHBOARD -->
+     <section id="dashboard" class="tab visible">
+  <h1>📊 Panel de Control</h1>
+
+  <div class="resumen">
+    <div class="tarjeta">
+      <h2>👥 Clientes</h2>
+      <p id="totalClientes">0</p>
+    </div>
+    <div class="tarjeta">
+      <h2>📂 Expedientes</h2>
+      <p id="totalExpedientes">0</p>
+    </div>
+    <div class="tarjeta">
+      <h2>📝 Tareas</h2>
+      <p id="totalTareas">0</p>
+    </div>
+    <div class="tarjeta">
+      <h2>🚨 Urgentes</h2>
+      <p id="tareasUrgentes">0</p>
+    </div>
+  </div>
+
+  <canvas id="graficoTareas" width="400" height="200"></canvas>
+</section>
+
+
+      <!-- CLIENTES -->
+      <section id="clientes" class="tab">
+        <h1>👤 Gestión de Clientes</h1>
+
+        <form id="clienteForm">
+          <input type="text" id="nombre" placeholder="Nombre" required>
+          <input type="email" id="correo" placeholder="Correo electrónico" required>
+          <input type="tel" id="telefono" placeholder="Teléfono" required>
+          <input type="text" id="materia" placeholder="Materia" required>
+          <input type="number" id="honorarios" placeholder="Honorarios" required>
+          <select id="estado">
+            <option value="pendiente">Pendiente</option>
+            <option value="aceptado">Aceptado</option>
+            <option value="rechazado">Rechazado</option>
+          </select>
+          <textarea id="comentarios" placeholder="Comentarios (notas internas)"></textarea>
+          <button type="submit">Guardar cliente</button>
+        </form>
+
+        <ul id="clientesUl"></ul>
+      </section>
+
+      <!-- EXPEDIENTES -->
+      <section id="expedientes" class="tab">
+        <h1>📁 Gestión de Expedientes</h1>
+
+        <form id="expedienteForm">
+          <input type="text" id="tituloExp" placeholder="Título del expediente" required>
+          <input type="text" id="rolExp" placeholder="Rol o número de causa">
+          <input type="text" id="materiaExp" placeholder="Materia legal" required>
+
+          <select id="clienteExp" required>
+            <option value="">Seleccionar cliente</option>
+          </select>
+
+          <select id="estadoExp">
+            <option value="aceptado">Aceptado</option>
+            <option value="en proceso">En proceso</option>
+            <option value="terminado exitoso">Terminado exitoso</option>
+            <option value="terminado fallido">Terminado fallido</option>
+          </select>
+
+          <!-- NUEVO CAMPO TRIBUNAL -->
+          <select id="tribunalExp">
+            <option value="">Tribunal (opcional)</option>
+            <option value="Juzgado de Letras">Juzgado de Letras</option>
+            <option value="Juzgado de Familia">Juzgado de Familia</option>
+            <option value="Juzgado de Garantía">Juzgado de Garantía</option>
+            <option value="Corte de Apelaciones">Corte de Apelaciones</option>
+            <option value="Corte Suprema">Corte Suprema</option>
+          </select>
+
+          <input type="text" id="abogadosExp" placeholder="Abogado(s) asignado(s)">
+          <button type="submit">Guardar expediente</button>
+        </form>
+
+        <ul id="expedientesUl"></ul>
+      </section>
+
+      <!-- TAREAS -->
+      <section id="tareas" class="tab">
+        <h1>📝 Gestión de Tareas</h1>
+
+        <form id="tareaForm">
+          <input type="text" id="tituloTarea" placeholder="Título de la tarea" required>
+
+          <select id="expedienteTarea" required>
+            <option value="">Seleccionar expediente</option>
+          </select>
+
+          <textarea id="descripcionTarea" placeholder="Descripción detallada"></textarea>
+          <input type="text" id="abogadoTarea" placeholder="Abogado asignado" required>
+
+          <select id="estadoTarea">
+            <option value="no iniciado">No iniciado</option>
+            <option value="en proceso">En proceso</option>
+            <option value="terminado">Terminado</option>
+          </select>
+
+          <select id="prioridadTarea">
+            <option value="normal">Normal</option>
+            <option value="prioritario">Prioritario</option>
+            <option value="urgente">Urgente</option>
+          </select>
+
+          <button type="submit">Guardar tarea</button>
+        </form>
+
+        <ul id="tareasUl"></ul>
+      </section>
+
+
+        <!-- Utilidades -->
+    <section id="utilidades" class="tab">
+  <h1>🛠 Utilidades</h1>
+
+  <div class="util">
+    <h2>📤 Exportar base de datos</h2>
+    <button id="btnExportar">Descargar Backup (.json)</button>
+  </div>
+
+  <div class="util">
+    <h2>📥 Importar base de datos</h2>
+    <input type="file" id="importadorJson" accept=".json">
+    <p class="aviso">* Sobrescribirá la información actual si no haces merge manual.</p>
+  </div>
+</section>
+
+    </main>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

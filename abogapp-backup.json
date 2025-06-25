@@ -1,0 +1,60 @@
+{
+  "clientes": [
+    {
+      "nombre": "Juan Pérez",
+      "correo": "juan.perez@example.com",
+      "telefono": "+56912345678",
+      "materia": "Divorcio",
+      "honorarios": 500000,
+      "estado": "aceptado",
+      "comentarios": "Cliente aceptó propuesta y envió documentación inicial."
+    },
+    {
+      "nombre": "Ana González",
+      "correo": "ana.gonzalez@example.com",
+      "telefono": "+56987654321",
+      "materia": "Contrato laboral",
+      "honorarios": 350000,
+      "estado": "pendiente",
+      "comentarios": "Reunión agendada para el lunes."
+    }
+  ],
+  "expedientes": [
+    {
+      "titulo": "Demanda de alimentos",
+      "rol": "1234-2024",
+      "materia": "Derecho de familia",
+      "cliente": "Juan Pérez",
+      "estado": "en proceso",
+      "tribunal": "Juzgado de Familia",
+      "abogados": "María López"
+    },
+    {
+      "titulo": "Redacción de contrato",
+      "rol": "",
+      "materia": "Derecho laboral",
+      "cliente": "Ana González",
+      "estado": "aceptado",
+      "tribunal": "Juzgado de Letras",
+      "abogados": "Pedro Morales"
+    }
+  ],
+  "tareas": [
+    {
+      "titulo": "Revisión de antecedentes",
+      "expediente": "Demanda de alimentos",
+      "descripcion": "Analizar documentos previos enviados por el cliente.",
+      "abogado": "María López",
+      "estado": "en proceso",
+      "prioridad": "prioritario"
+    },
+    {
+      "titulo": "Redacción inicial del contrato",
+      "expediente": "Redacción de contrato",
+      "descripcion": "Borrador listo para revisión el viernes.",
+      "abogado": "Pedro Morales",
+      "estado": "no iniciado",
+      "prioridad": "urgente"
+    }
+  ]
+}

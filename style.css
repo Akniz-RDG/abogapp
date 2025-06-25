@@ -1,0 +1,282 @@
+/* === RESET GLOBAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #eef1f5;
+  color: #2c3e50;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+  width: 220px;
+  background-color: #1c1f2a;
+  color: #fff;
+  padding: 1rem;
+}
+
+.sidebar h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 0.5rem 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 0.6rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #2d3a55;
+  font-weight: bold;
+}
+
+/* === CONTENIDO PRINCIPAL === */
+.contenido {
+  flex: 1;
+  padding: 2rem;
+  background-color: #fff;
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+form input,
+form select,
+form textarea,
+form button {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form button {
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #2980b9;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #ffffff; /* Fondo claro */
+  color: #2d3436;       /* Color del texto oscuro y profesional */
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #dfe6ed;
+  border-left: 6px solid #6c5ce7; /* Línea decorativa violeta */
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #f0f4fb;
+}
+
+li button {
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+li button.editar {
+  background-color: #f39c12;
+}
+
+li button.eliminar {
+  background-color: #e74c3c;
+}
+
+li button:hover {
+  opacity: 0.8;
+}
+
+/* === TARJETAS DEL DASHBOARD === */
+.resumen {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.tarjeta {
+  background-color: #f0f4f8;
+  border-radius: 10px;
+  padding: 1rem;
+  flex: 1;
+  min-width: 150px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.tarjeta:hover {
+  transform: scale(1.02);
+}
+
+.tarjeta h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* === PESTAÑAS CON TRANSICIÓN === */
+.tab {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tab.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === SECCIÓN DE UTILIDADES === */
+.util {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: #f9fafc;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.util h2 {
+  margin-bottom: 1rem;
+}
+
+.util button {
+  padding: 0.5rem 1rem;
+  background-color: #16a085;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.util button:hover {
+  background-color: #138d75;
+}
+
+.aviso {
+  font-size: 0.9rem;
+  color: #a94442;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    overflow-x: auto;
+  }
+
+  .sidebar h2 {
+    display: none;
+  }
+
+  .sidebar ul {
+    display: flex;
+    padding: 0.5rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .sidebar a {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+  }
+
+  .contenido {
+    padding: 1rem;
+  }
+
+  .resumen {
+    flex-direction: column;
+  }
+
+  .tarjeta {
+    width: 100%;
+  }
+
+  form input,
+  form select,
+  form textarea,
+  form button {
+    width: 100% !important;
+  }
+}
