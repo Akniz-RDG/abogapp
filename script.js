@@ -189,18 +189,35 @@ const selectExpediente = document.getElementById("expedienteTarea");
 // Cargar expedientes en selector
 function cargarExpedientesEnSelect() {
   const expedientes = JSON.parse(localStorage.getItem("expedientes")) || [];
+  const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+
   selectExpediente.innerHTML = '<option value="">Seleccionar expediente</option>';
+
   expedientes.forEach((e) => {
+    const cliente = clientes.find(c => c.id === e.clienteId);
+    const clienteNombre = cliente ? cliente.nombre : 'Cliente desconocido';
+
     const opt = document.createElement("option");
     opt.value = e.id;
-    opt.textContent = e.titulo;
+    opt.textContent = `${e.titulo} (${clienteNombre})`;
+
     selectExpediente.appendChild(opt);
   });
 }
 
+
 // Guardar tarea
 tareaForm?.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  const fechaInicio = document.getElementById("fechaInicioTarea").value;
+  const fechaTermino = document.getElementById("fechaTerminoTarea").value;
+
+  // Validación
+  if (fechaInicio && fechaTermino && fechaTermino < fechaInicio) {
+    alert("⚠️ La fecha de término no puede ser anterior a la de inicio.");
+    return;
+  }
 
   const tarea = {
     id: Date.now(),
@@ -210,6 +227,8 @@ tareaForm?.addEventListener("submit", (e) => {
     abogado: document.getElementById("abogadoTarea").value,
     estado: document.getElementById("estadoTarea").value,
     prioridad: document.getElementById("prioridadTarea").value,
+    fechaInicio,
+    fechaTermino
   };
 
   const tareas = JSON.parse(localStorage.getItem("tareas")) || [];
@@ -225,60 +244,34 @@ function mostrarTarea(tarea) {
   const exp = expedientes.find(e => e.id === tarea.expedienteId);
 
   const li = document.createElement("li");
+
+  // Aquí construimos el contenido del <li>
   li.innerHTML = `
     <strong>${tarea.titulo}</strong> | ${tarea.prioridad.toUpperCase()} | <em>${tarea.estado}</em><br>
     Abogado: ${tarea.abogado}<br>
     Expediente: ${exp ? exp.titulo : 'Desconocido'}<br>
-    ${tarea.descripcion}
+    ${tarea.descripcion}<br>
+    <strong>Inicio:</strong> ${tarea.fechaInicio || 'No definido'} |
+    <strong>Término:</strong> ${tarea.fechaTermino || 'No definido'}<br>
     <span>
       <button class="editar">✏️</button>
       <button class="eliminar">🗑️</button>
     </span>
   `;
 
+  // Insertamos la tarea en la lista visual
   tareasUl.appendChild(li);
 
+  // Botones funcionales
   li.querySelector(".eliminar").addEventListener("click", () => {
     eliminarTarea(tarea.id, li);
   });
 
   li.querySelector(".editar").addEventListener("click", () => {
     editarTarea(tarea.id);
-    li.remove();
+    li.remove(); // Borra visualmente la vieja versión para evitar duplicado
   });
 }
-
-function eliminarTarea(id, elemento) {
-  let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
-  tareas = tareas.filter((t) => t.id !== id);
-  localStorage.setItem("tareas", JSON.stringify(tareas));
-  elemento.remove();
-}
-
-function editarTarea(id) {
-  const tareas = JSON.parse(localStorage.getItem("tareas")) || [];
-  const tarea = tareas.find(t => t.id === id);
-
-  document.getElementById("tituloTarea").value = tarea.titulo;
-  document.getElementById("descripcionTarea").value = tarea.descripcion;
-  document.getElementById("abogadoTarea").value = tarea.abogado;
-  document.getElementById("estadoTarea").value = tarea.estado;
-  document.getElementById("prioridadTarea").value = tarea.prioridad;
-  selectExpediente.value = tarea.expedienteId;
-
-  eliminarTarea(id);
-}
-
-function cargarTareas() {
-  const tareas = JSON.parse(localStorage.getItem("tareas")) || [];
-  tareas.forEach(mostrarTarea);
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  cargarExpedientesEnSelect();
-  cargarTareas();
-});
-
 
 // Navegación por pestañas
 document.querySelectorAll(".sidebar a").forEach(enlace => {
